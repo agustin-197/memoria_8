@@ -6,7 +6,7 @@ use std.textio.all;
 
 entity rom_512x32 is
     generic (
-       constant init_file string :=""
+       constant init_file: string :=""
 ); 
 
 port(

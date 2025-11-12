@@ -52,10 +52,11 @@ begin
 
         --PRUEBA 1(lectura de valor inicial)
         report "Prueba 1: Leyendo valor inicial de addr 8" severity note;
-        addr2 <= "000001000"-, --addr8
+        addr2 <= "000001000"; --addr8
         wait until rising_edge(clk);
 
         wait until rising_edge(clk);
+        wait for 1 ns;
 
         assert dout = x"12345678"
         report "Valor inicial (addr 8) distinto al esperado" severity error;
@@ -82,16 +83,21 @@ begin
         we <= '0';
         mask <= "0000";
 
-        --mover puerto de lectura a addr 9
+        addr2 <= "000001001";
+
+        wait until rising_edge(clk);
+        wait until rising_edge(clk);
+        wait for 1 ns;
+        
         assert dout = x"AAAAAAAA"
             report "Valor leido (addr 9) es distinto al que se escribió" severity error;
 
         --PRUEBA 4: escritura con mascara
-        report "Prueba 4: Escribiendo 'BBBBDDDD' en addr 9 con mascara '1100'";
+        report "Prueba 4: Escribiendo '1111AAAA' en addr 9 con mascara '1100'";
         we <= '1';
         mask <= "1100";
         addr1 <= "000001001";
-        din <= x"BBBBDDDD";
+        din <= x"11110000";
 
         wait until rising_edge(clk);
 
@@ -103,8 +109,9 @@ begin
         addr2 <= "000001001";
 
         wait until rising_edge(clk);
+        wait until rising_edge(clk);
 
-        assert dout = x"BBBBAAAA"
+        assert dout = x"1111AAAA"
             report "Valor leido (addr 9) tras escritura con mascara es incorrecto" severity error;
 
             --fin testbench
