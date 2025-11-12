@@ -1,0 +1,22 @@
+
+# Tablero de botones de 8 bits
+set_io botones[7] 24
+set_io botones[6] 23
+set_io botones[5] 22
+set_io botones[4] 21
+set_io botones[3] 16
+set_io botones[2] 15
+set_io botones[1] 12
+set_io botones[0] 11
+
+# Display de siete segmentos
+set_io punto 124
+set_io deco_out[6] 134
+set_io deco_out[5] 129
+set_io deco_out[4] 135
+set_io deco_out[3] 130
+set_io deco_out[2] 128
+set_io deco_out[1] 122
+set_io deco_out[0] 125
+
+set_io clk 94

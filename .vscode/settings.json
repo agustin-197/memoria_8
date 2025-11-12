@@ -1,0 +1,7 @@
+{
+    "terminal.integrated.defaultProfile.windows": "bash (MSYS2-UCRT64)",
+    "github.copilot.enable": {
+        "vhdl": false
+    },
+    "cortex-debug.variableUseNaturalFormat": false
+}
